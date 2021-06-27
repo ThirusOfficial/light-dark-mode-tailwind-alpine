@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .label {
+        @apply inline-block mr-2 text-xs text-gray-600 bg-cyan-100 px-5 py-1 rounded-full dark:bg-cyan-900 dark:text-gray-200;
+    }
+    .btn {
+        @apply inline-block mt-4 bg-cyan-600 text-white uppercase tracking-wide text-sm rounded-lg px-8 py-2 font-bold;
+    }
+}

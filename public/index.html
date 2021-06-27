@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Light & Dark Mode with Tailwind CSS & Alpine JS</title>
+      <link rel="stylesheet" href="styles.css" />
+      <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+   </head>
+   <body class="antialiased"
+      x-data="{'darkMode': false}"
+      x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))">
+      <div :class="{'dark': darkMode === true}">
+         <div class="min-h-screen text-gray-800 bg-white dark:bg-gray-800 dark:text-gray-100">
+            <!-- Flex container begins -->
+            <div class="flex flex-col space-y-12 m-auto max-w-5xl pt-8">
+               <!-- Toggle switch begins -->
+               <div class="flex justify-end items-center space-x-2">
+                  <span class="text-sm text-gray-800 dark:text-gray-500">Light</span>
+                  <label for="toggle" class="w-9 h-5 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer duration-300 ease-in-out dark:bg-gray-600">
+                     <div class="toggle-dot bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out dark:translate-x-3"></div>
+                  </label>
+                  <span class="text-sm text-gray-400 dark:text-white">Dark</span>
+                  <input id="toggle" type="checkbox" class="hidden" :value="darkMode" @change="darkMode = !darkMode" />
+               </div>
+               <!-- Toggle switch ends -->
+               <!-- Post 1 begins -->
+               <div class="flex space-x-12 items-center">
+                  <div class="flex-1">
+                     <span class="label">label 1</span>
+                     <span class="label">label 2</span>
+                     <h2 class="text-4xl font-bold mt-2">Lorem ipsum dolor sit amet consectetur</h2>
+                     <p class="mt-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consectetur sapiente, facere quos debitis adipisci quisquam facilis id
+                        omnis necessitatibus...
+                     </p>
+                     <a href="#" class="btn">Read More</a>
+                  </div>
+                  <div class="flex-1">
+                     <img src="images/image1.jpg" alt="" class="h-64 w-full object-cover overflow-hidden" />
+                  </div>
+               </div>
+               <!-- Post 1 ends -->
+               <!-- Post 2 begins -->
+               <div class="flex flex-row-reverse space-x-12 space-x-reverse items-center">
+                  <div class="flex-1">
+                     <span class="label">label 1</span>
+                     <span class="label">label 2</span>
+                     <h2 class="text-4xl font-bold mt-2">Lorem ipsum dolor sit amet consectetur</h2>
+                     <p class="mt-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti consectetur sapiente, facere quos debitis adipisci quisquam facilis id
+                        omnis necessitatibus...
+                     </p>
+                     <a href="#" class="btn">Read More</a>
+                  </div>
+                  <div class="flex-1">
+                     <img src="images/image2.jpg" alt="" class="h-64 w-full object-cover overflow-hidden" />
+                  </div>
+               </div>
+               <!-- Post 2 ends -->
+            </div>
+            <!-- Flex container ends -->
+         </div>
+      </div>
+   </body>
+</html>
